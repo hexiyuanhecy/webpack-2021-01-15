@@ -1,0 +1,13 @@
+@font-face{
+    font-family: 'MyFont';
+    src: url(./huangyouti.TTF);
+}
+
+body{
+    background-color: lightblue;
+}
+.hello {
+  color: red;
+  /* background: url('./icon.jpg'); */
+  font-family: MyFont;
+}

@@ -3,7 +3,7 @@
  * @Author: hexy
  * @Date: 2021-01-15 11:24:35
  * @LastEditors: hexy
- * @LastEditTime: 2021-01-18 14:44:27
+ * @LastEditTime: 2021-01-19 19:40:37
  * @FilePath: \webpack-01-15\06Cache\webpack.config.js
  */
 const path = require('path');
@@ -48,12 +48,25 @@ module.exports = {
         path: path.join(__dirname, 'dist')
     },
     // 最佳化  
-    /*     optimization: {
+    optimization: {
         // 防止重复 SplitChunksPlugin 插件将公共依赖模块提取到已有入口chunk或新chunk
-        splitChunks: {
+        /* splitChunks: {
             chunks: 'all'
+        }, */
+        // 利用client 的长效缓存机制，命中缓存来取消请求，并减少向 server 获取资源，
+        // 同时还能保证 client 代码和 server 代码版本一致。
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all',
+                },
+            },
         },
         // HTML 引入多个入口需设置，否则会有重复打包问题
-        // runtimeChunk: 'single'
-    } */
+        // 将 runtime 代码拆分为一个单独的 chunk
+        runtimeChunk: 'single',
+        // moduleIds: 'deterministic',
+    }
 }

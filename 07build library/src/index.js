@@ -1,12 +1,17 @@
+/*
+ * @Description: 
+ * @Author: hexy
+ * @Date: 2021-01-15 10:57:55
+ * @LastEditors: hexy
+ * @LastEditTime: 2021-01-15 11:12:22
+ * @FilePath: \webpack-01-15\src\index.js
+ */
 import _ from 'lodash';
-import Print from './print';
-
 function component () {
     const element = document.createElement('div');
 
-    // lodash 是由当前 script 脚本 import 进来的
+    // lodash，现在通过一个 script 引入
     element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-    element.onclick = Print.bind(null, 'Hello webpack!');
 
     return element;
 }

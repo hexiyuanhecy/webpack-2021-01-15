@@ -54,6 +54,7 @@ module.exports = {
             chunks: 'all'
         },
         // HTML 引入多个入口需设置，否则会有重复打包问题
+        // 将 runtime 代码拆分为一个单独的 chunk
         // runtimeChunk: 'single'
     } */
 }

@@ -35,6 +35,7 @@ module.exports = ['source-map'].map(devtool => ({
     optimization: {
         // 修改A，B的hash也不会变
         // 为运行时代码创建了一个额外的 chunk，所以它的生成代价较低
+        // 确保在生成 entry chunk 时，尽量减少其体积以提高性能。下面的配置为运行时代码创建了一个额外的 chunk，所以它的生成代价较低：
         runtimeChunk: true,
     },
     externals: {
